@@ -5,10 +5,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const charactersRoutes = require("../marvel-backend/routes/characters");
-const comicsRoutes = require("../marvel-backend/routes/comics");
-const comicsbycharacterRoutes = require("../marvel-backend/routes/comicsbycharacter");
-const characterbyidRoutes = require("../marvel-backend/routes/characterbyid");
+const charactersRoutes = require("./routes/characters");
+const comicsRoutes = require("./routes/comics");
+const comicsbycharacterRoutes = require("./routes/comicsbycharacter");
+const characterbyidRoutes = require("./routes/characterbyid");
 app.use(charactersRoutes);
 app.use(comicsRoutes);
 app.use(comicsbycharacterRoutes);
