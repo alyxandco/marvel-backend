@@ -7,7 +7,6 @@ const axios = require("axios");
 router.get("/character/:characterId", async (req, res) => {
   try {
     const charId = req.params.characterId;
-    console.log(charId);
 
     const MARVEL = process.env.MARVEL_SECRET_KEY;
 

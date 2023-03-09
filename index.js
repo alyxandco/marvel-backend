@@ -1,14 +1,22 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
-const app = express();
-app.use(cors());
-app.use(express.json());
 
+// mongoose.set("strictQuery", false);
+mongoose.connect(process.env.MONGODB_URI);
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+const userRoutes = require("./routes/user");
 const charactersRoutes = require("./routes/characters");
 const comicsRoutes = require("./routes/comics");
 const comicsbycharacterRoutes = require("./routes/comicsbycharacter");
 const characterbyidRoutes = require("./routes/characterbyid");
+
+app.use(userRoutes);
 app.use(charactersRoutes);
 app.use(comicsRoutes);
 app.use(comicsbycharacterRoutes);
