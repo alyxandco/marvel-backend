@@ -6,7 +6,9 @@ const isAuthenticated = async (req, res, next) => {
     // console.log(req.headers.authorization);
     // je vais chercher mon token et j'enlève "Bearer "
     if (!req.headers.authorization) {
-      return res.status(401).json({ message: "Unauthorized !" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized (isAuthenticated) !" });
     }
     const token = req.headers.authorization.replace("Bearer ", "");
     // console.log(token);

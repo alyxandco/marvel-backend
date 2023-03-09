@@ -7,7 +7,7 @@ const axios = require("axios");
 // Import du middleware isAuthenticated
 const isAuthenticated = require("../middlewares/isAuthenticated");
 
-router.get("/comics", isAuthenticated, async (req, res) => {
+router.get("/comics", async (req, res) => {
   try {
     // let name = "";
     // if (req.query.name) {
