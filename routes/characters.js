@@ -5,9 +5,9 @@ const router = express.Router();
 const axios = require("axios");
 
 // Import du middleware isAuthenticated
-// const isAuthenticated = require("../middlewares/isAuthenticated");
+const isAuthenticated = require("../middlewares/isAuthenticated");
 
-router.get("/characters", async (req, res) => {
+router.get("/characters", isAuthenticated, async (req, res) => {
   try {
     // let name = "";
     // if (req.query.name) {
@@ -20,7 +20,12 @@ router.get("/characters", async (req, res) => {
     const limit = req.query.limit || "100";
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_SECRET_KEY}&name=${name}&skip=${skip}&limit=${limit}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_SECRET_KEY}&name=${name}&skip=${skip}&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     console.log(response.data);
     res.json({ message: response.data });
