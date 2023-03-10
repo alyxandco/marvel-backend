@@ -20,12 +20,7 @@ router.get("/characters", isAuthenticated, async (req, res) => {
     const limit = req.query.limit || "100";
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_SECRET_KEY}&name=${name}&skip=${skip}&limit=${limit}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_SECRET_KEY}&name=${name}&skip=${skip}&limit=${limit}`
     );
     console.log(response.data);
     res.json({ message: response.data });

@@ -15,8 +15,8 @@ const isAuthenticated = async (req, res, next) => {
 
     // Je vais chercher dans ma BDD un user dont le token est celui que j'ai reçu
     // J'en trouve un :
-    const user = await User.findOne({ token: token }).select("account");
-
+    const user = await User.findOne({ token: token }).select("user");
+    console.log(user);
     // Si je n'en trouve pas ====> erreur
     if (!user) {
       return res.status(401).json({ message: "Unauthorized" });

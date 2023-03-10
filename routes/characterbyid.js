@@ -4,7 +4,10 @@ const router = express.Router();
 
 const axios = require("axios");
 
-router.get("/character/:characterId", async (req, res) => {
+// Import du middleware isAuthenticated
+const isAuthenticated = require("../middlewares/isAuthenticated");
+
+router.get("/character/:characterId", isAuthenticated, async (req, res) => {
   try {
     const charId = req.params.characterId;
 
